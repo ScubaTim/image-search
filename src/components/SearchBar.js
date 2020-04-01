@@ -4,16 +4,10 @@ class SearchBar extends React.Component {
     state = {
         searchTerm: ''
     };
-
-    onInputChange = (e) => {
-        this.setState({ searchTerm: e.target.value });
-    }
-
     onFormSubmit = (e) => {
         e.preventDefault();
-        this.props.onSubmit(this.state.searchTerm);
+        this.props.submit(this.state.searchTerm);
     }
-
 
     render() {
         return (
@@ -21,7 +15,7 @@ class SearchBar extends React.Component {
                 <form onSubmit={this.onFormSubmit} className="ui form">
                     <div className="field">
                         <label>Image Search</label>
-                        <input type="text" value={this.state.searchTerm} onChange={this.onInputChange} />
+                        <input type="text" value={this.state.searchTerm} onChange={e => this.setState({ searchTerm: e.target.value })} />
                     </div>
                 </form>
             </div>
